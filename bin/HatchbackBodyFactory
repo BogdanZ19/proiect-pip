@@ -1,6 +1,0 @@
-public class HatchbackBodyFactory extends CarBodyFactory{
-    @Override
-    protected CarBody createBody() {
-        return new Hatchback();
-    }
-}

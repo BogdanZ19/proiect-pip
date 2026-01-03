@@ -6,39 +6,61 @@ import java.awt.event.ActionListener;
 public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Car Body Factory");
+            JFrame frame = new JFrame("Vehicle Factory");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(400, 200);
 
             JPanel panel = new JPanel();
             panel.setLayout(new GridLayout(3, 1, 10, 10));
 
-            JLabel label = new JLabel("Select car body type:");
+            JLabel label = new JLabel("Select vehicle type:");
             panel.add(label);
 
-            JButton sedanButton = new JButton("Create Sedan Body");
-            JButton suvButton = new JButton("Create SUV Body");
+            JButton bikeButton = new JButton("Create Bike");
+            JButton truckButton = new JButton("Create Truck");
 
-            panel.add(sedanButton);
-            panel.add(suvButton);
+            panel.add(bikeButton);
+            panel.add(truckButton);
 
-            sedanButton.addActionListener(new ActionListener() {
+            bikeButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    CarBodyFactory factory = new SedanBodyFactory();
-                    CarBody body = factory.create();
-                    JOptionPane.showMessageDialog(frame, "Sedan body created: " + body);
+                    VehicleFactory factory = new BikeFactory();
+                    Vehicle vehicle = factory.create();
+                    JOptionPane.showMessageDialog(frame, "Bike created: " + vehicle);
                 }
             });
 
-            suvButton.addActionListener(new ActionListener() {
+            truckButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    CarBodyFactory factory = new SuvBodyFactory();
-                    CarBody body = factory.create();
-                    JOptionPane.showMessageDialog(frame, "SUV body created: " + body);
+                    VehicleFactory factory = new TruckFactory();
+                    Vehicle vehicle = factory.create();
+                    JOptionPane.showMessageDialog(frame, "Truck created: " + vehicle);
                 }
             });
+
+            ActionListener eventListener = e -> {
+                String btn = ((JButton) e.getSource()).getText();
+
+                if (btn.equals("carButton")) {
+                    VehicleFactory factory = new CarFactory();
+                    Vehicle vehicle = factory.create();
+                    JOptionPane.showMessageDialog(frame, "Car created: " + vehicle);
+                }
+
+                if (btn.equals("bikeButton")) {
+                    VehicleFactory factory = new BikeFactory();
+                    Vehicle vehicle = factory.create();
+                    JOptionPane.showMessageDialog(frame, "Bike created: " + vehicle);
+                }
+
+                if (btn.equals("truckButton")) {
+                    VehicleFactory factory = new TruckFactory();
+                    Vehicle vehicle = factory.create();
+                    JOptionPane.showMessageDialog(frame, "Truck created: " + vehicle);
+                }
+            };
 
             frame.getContentPane().add(panel);
             frame.setLocationRelativeTo(null);
