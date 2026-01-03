@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Main {
@@ -11,56 +10,42 @@ public class Main {
             frame.setSize(400, 200);
 
             JPanel panel = new JPanel();
-            panel.setLayout(new GridLayout(3, 1, 10, 10));
+            panel.setLayout(new GridLayout(4, 1, 10, 10));
 
             JLabel label = new JLabel("Select vehicle type:");
             panel.add(label);
 
+            JButton carButton = new JButton("Create Car");
             JButton bikeButton = new JButton("Create Bike");
             JButton truckButton = new JButton("Create Truck");
 
+            carButton.setActionCommand("CAR");
+            bikeButton.setActionCommand("BIKE");
+            truckButton.setActionCommand("TRUCK");
+
+            panel.add(carButton);
             panel.add(bikeButton);
             panel.add(truckButton);
 
-            bikeButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    VehicleFactory factory = new BikeFactory();
-                    Vehicle vehicle = factory.create();
-                    JOptionPane.showMessageDialog(frame, "Bike created: " + vehicle);
-                }
-            });
-
-            truckButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    VehicleFactory factory = new TruckFactory();
-                    Vehicle vehicle = factory.create();
-                    JOptionPane.showMessageDialog(frame, "Truck created: " + vehicle);
-                }
-            });
-
             ActionListener eventListener = e -> {
-                String btn = ((JButton) e.getSource()).getText();
-
-                if (btn.equals("carButton")) {
+                Object btn = ((JButton) e.getSource()).getActionCommand();
+                if (btn.equals("CAR")) {
                     VehicleFactory factory = new CarFactory();
                     Vehicle vehicle = factory.create();
                     JOptionPane.showMessageDialog(frame, "Car created: " + vehicle);
-                }
-
-                if (btn.equals("bikeButton")) {
+                } else if (btn.equals("BIKE")) {
                     VehicleFactory factory = new BikeFactory();
                     Vehicle vehicle = factory.create();
                     JOptionPane.showMessageDialog(frame, "Bike created: " + vehicle);
-                }
-
-                if (btn.equals("truckButton")) {
+                } else if (btn.equals("TRUCK")) {
                     VehicleFactory factory = new TruckFactory();
                     Vehicle vehicle = factory.create();
                     JOptionPane.showMessageDialog(frame, "Truck created: " + vehicle);
                 }
             };
+            carButton.addActionListener(eventListener);
+            bikeButton.addActionListener(eventListener);
+            truckButton.addActionListener(eventListener);
 
             frame.getContentPane().add(panel);
             frame.setLocationRelativeTo(null);
