@@ -1,9 +1,9 @@
 public abstract class VehicleFactory {
     public Vehicle create() {
-        Vehicle body = createBody();
-        body.build();
-        return body;
+        Vehicle vehicle = createVehicle();
+        vehicle.build();
+        return vehicle;
     }
 
-    protected abstract Vehicle createBody();
+    protected abstract Vehicle createVehicle();
 }

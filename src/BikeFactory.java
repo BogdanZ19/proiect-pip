@@ -1,6 +1,6 @@
 public class BikeFactory extends VehicleFactory{
     @Override
-    protected Vehicle createBody() {
+    protected Vehicle createVehicle() {
         return new Bike();
     }
 }
