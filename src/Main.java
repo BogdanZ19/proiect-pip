@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,21 +28,20 @@ public class Main {
             panel.add(bikeButton);
             panel.add(truckButton);
 
+            HashMap<String, VehicleFactory> factories = new HashMap<>();
+            factories.put("CAR", new CarFactory());
+            factories.put("BIKE", new BikeFactory());
+            factories.put("TRUCK", new TruckFactory());
+
             ActionListener eventListener = e -> {
-                Object btn = ((JButton) e.getSource()).getActionCommand();
-                if (btn.equals("CAR")) {
-                    VehicleFactory factory = new CarFactory();
+                String command = ((JButton) e.getSource()).getActionCommand();
+
+                VehicleFactory factory = factories.get(command);
+
+                if (factory != null) {
                     Vehicle vehicle = factory.create();
-                    JOptionPane.showMessageDialog(frame, "Car created: " + vehicle);
-                } else if (btn.equals("BIKE")) {
-                    VehicleFactory factory = new BikeFactory();
-                    Vehicle vehicle = factory.create();
-                    JOptionPane.showMessageDialog(frame, "Bike created: " + vehicle);
-                } else if (btn.equals("TRUCK")) {
-                    VehicleFactory factory = new TruckFactory();
-                    Vehicle vehicle = factory.create();
-                    JOptionPane.showMessageDialog(frame, "Truck created: " + vehicle);
-                }
+                    JOptionPane.showMessageDialog(frame, "Created: " + vehicle);
+                }   
             };
             carButton.addActionListener(eventListener);
             bikeButton.addActionListener(eventListener);
