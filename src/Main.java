@@ -40,7 +40,7 @@ public class Main {
 
                 if (factory != null) {
                     Vehicle vehicle = factory.create();
-                    JOptionPane.showMessageDialog(frame, "Created: " + vehicle);
+                    vehicle.build(frame);
                 }   
             };
             carButton.addActionListener(eventListener);
