@@ -1,6 +1,7 @@
 import java.awt.Color;
 
 public class MyUtility {
+    // Generare culoare random
     public static Color getRandomColor() {
         int r = (int) (Math.random() * 256);
         int g = (int) (Math.random() * 256);

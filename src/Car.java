@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+// Concrete product class
 public class Car implements Vehicle {
     Color color = MyUtility.getRandomColor();
 
@@ -16,7 +17,6 @@ public class Car implements Vehicle {
 
     @Override
     public void draw(Graphics2D g) {
-
         g.setColor(this.color);
         g.fillRect(60, 80, 160, 40);   
         g.fillRect(90, 50, 100, 30);   

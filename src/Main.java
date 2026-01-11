@@ -35,14 +35,14 @@ public class Main {
             factories.put("BIKE", new BikeFactory());
             factories.put("TRUCK", new TruckFactory());
             
-            // Handle input
+            // Procesare input
             ActionListener eventListener = event -> {
                 String command = ((JButton) event.getSource()).getActionCommand();
                 VehicleFactory factory = factories.get(command);
 
                 if (factory != null) {
                     try {
-                        // Create vehicle
+                        // Instantiere vehicul
                         Vehicle vehicle = factory.create();
                         vehicle.build(frame);
                     } catch (Exception e) {      

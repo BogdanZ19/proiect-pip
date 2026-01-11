@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
+// Clasa container pentru desen
 public class VehiclePanel extends JPanel {
     private final Vehicle vehicle;
     
