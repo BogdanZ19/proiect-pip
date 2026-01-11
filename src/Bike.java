@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class Bike implements Vehicle{
+    Color color = MyUtility.getRandomColor();
+
     @Override
     public void build(JFrame frame) {
         VehiclePanel panel = new VehiclePanel(this);
@@ -20,7 +22,7 @@ public class Bike implements Vehicle{
         g.drawOval(160, 90, 40, 40);
 
         g.setStroke(new BasicStroke(3));
-        g.setColor(MyUtility.getRandomColor());
+        g.setColor(color);
         g.drawLine(80, 110, 130, 70);
         g.drawLine(130, 70, 180, 110);
         g.drawLine(100, 110, 160, 110);

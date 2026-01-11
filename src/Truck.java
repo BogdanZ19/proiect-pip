@@ -5,6 +5,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class Truck implements Vehicle{
+    Color color = MyUtility.getRandomColor();
+
     @Override
     public void build(JFrame frame) {
         VehiclePanel panel = new VehiclePanel(this);
@@ -14,7 +16,7 @@ public class Truck implements Vehicle{
 
     @Override
     public void draw(Graphics2D g) {
-        g.setColor(MyUtility.getRandomColor());
+        g.setColor(color);
         g.fillRect(40, 70, 130, 50);   // cargo
         g.fillRect(170, 90, 60, 30);   // cabin
 
