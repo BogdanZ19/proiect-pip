@@ -14,7 +14,7 @@ public class Truck implements Vehicle{
 
     @Override
     public void draw(Graphics2D g) {
-        g.setColor(Color.RED);
+        g.setColor(MyUtility.getRandomColor());
         g.fillRect(40, 70, 130, 50);   // cargo
         g.fillRect(170, 90, 60, 30);   // cabin
 

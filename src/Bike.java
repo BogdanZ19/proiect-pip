@@ -1,3 +1,4 @@
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
@@ -18,6 +19,8 @@ public class Bike implements Vehicle{
         g.drawOval(60, 90, 40, 40);
         g.drawOval(160, 90, 40, 40);
 
+        g.setStroke(new BasicStroke(3));
+        g.setColor(MyUtility.getRandomColor());
         g.drawLine(80, 110, 130, 70);
         g.drawLine(130, 70, 180, 110);
         g.drawLine(100, 110, 160, 110);

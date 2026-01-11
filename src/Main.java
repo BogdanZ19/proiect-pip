@@ -33,14 +33,18 @@ public class Main {
             factories.put("BIKE", new BikeFactory());
             factories.put("TRUCK", new TruckFactory());
 
-            ActionListener eventListener = e -> {
-                String command = ((JButton) e.getSource()).getActionCommand();
-
+            ActionListener eventListener = event -> {
+                String command = ((JButton) event.getSource()).getActionCommand();
                 VehicleFactory factory = factories.get(command);
 
                 if (factory != null) {
-                    Vehicle vehicle = factory.create();
-                    vehicle.build(frame);
+                    try {
+                        // throw new Exception("exceptie la crearea unui vehicul");
+                        Vehicle vehicle = factory.create();
+                        vehicle.build(frame);
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(frame, "Error creating vehicle: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }   
             };
             carButton.addActionListener(eventListener);
